@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header @searchEmit="searchFunction"/>
     <Main/>
   </div>
 </template>
@@ -14,10 +14,29 @@ export default {
   components: {
     Header,
     Main
+  },
+  data() {
+    return {
+      searchFinal: ""
+    }
+  },
+  methods: {
+    searchFunction(searched) {
+      this.searchFinal = searched;
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import "@/styles/commons.scss";
+
+body {
+  background-color: black;
+}
+
+.prova {
+  color:white;
+}
+
 </style>

@@ -1,6 +1,5 @@
 <template>
   <main>
-      
   </main>
 </template>
 
@@ -11,5 +10,4 @@ export default {
 </script>
 
 <style>
-
 </style>
