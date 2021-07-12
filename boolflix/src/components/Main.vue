@@ -2,12 +2,19 @@
   <main>
       <ul>
           <li v-for="(e, i) in movies" :key="i" class="primary"> 
-              
-              {{e.title}}
 
-              <ul>
+              <ul v-if="e.title.toLowerCase().includes(details.toLowerCase())">
+                  <li class="primary">
+                      {{e.title}}
+                  </li>
                   <li class="secondary">
-                      {{e.overview}}
+                      Titolo originale: {{e.original_title}}
+                  </li>
+                  <li class="secondary">
+                      Lingua originale: {{e.original_language}}
+                  </li>
+                  <li class="secondary">
+                      voto: {{e.vote_average}}
                   </li>
               </ul>
 
@@ -22,12 +29,12 @@ import axios from "axios";
 export default {
     name: "Main",
     props: {
-       
+       details: String,
     },
     data() {
         return {
-            apiURL: "https://api.themoviedb.org/3/search/movie?api_key=498d1c8d4b0a878ee9fc00ed9888ae18&query=matrix",
-            movies: [],
+            apiURL: "https://api.themoviedb.org/3/movie/popular?api_key=498d1c8d4b0a878ee9fc00ed9888ae18",
+            movies: []
         }
     },
     created() {
@@ -39,25 +46,30 @@ export default {
                 .get(this.apiURL)
                 .then (x => {
                     this.movies=(x.data.results);
-                    console.log(this.movies)
                 })
         }
     }
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "./../styles/vars.scss";
 ul {
-    color:white
+    color:white;
+    width: 50%;
+    margin:auto;
+    list-style-type: none;
 }
 
 li.primary {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: $netflixRed;
+    padding-top:50px
 }
 
 li.secondary {
-    font-size: .8rem;
+    font-size: 1.3rem;
+    padding:20px;
 }
 
 </style>

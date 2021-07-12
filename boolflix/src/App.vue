@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @searchEmit="searchFunction"/>
-    <Main/>
+    <Main :details="searchFinal"/>
   </div>
 </template>
 

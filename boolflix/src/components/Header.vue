@@ -3,9 +3,10 @@
       <input type="search" 
       name="" 
       id="" 
-      placeholder="Cerca qui" 
-      v-model="searchModel" 
+      v-model="searchModel"
       @keyup.enter="$emit( 'searchEmit', searchModel )">
+
+      <div type="submit" class="btn btn-danger" @click="$emit( 'searchEmit', searchModel )">Cerca</div>
   </header>
 </template>
 
@@ -33,10 +34,12 @@ header {
     clear: both;
 }
 
-input {
+input,
+.btn {
     float: right;
-    margin-right: 200px;
+    height: 40px;
 }
+
 
 
 </style>
