@@ -52,7 +52,6 @@ export default {
                     `)
                 .then (x => {
                     this.movies = x.data.results;
-                    console.log(this.apiQuery)
 
                 })
                 .catch(err=> { 
