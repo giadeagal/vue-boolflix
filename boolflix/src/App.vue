@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @searchEmit="searchFunction"/>
-    <Main :movieList="movies"/>
+    <Main :movieList="movies" :seriesList="series"/>
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
     return {
       apiKey: "498d1c8d4b0a878ee9fc00ed9888ae18",
       apiLang: "it-IT",
-      movies: []
+      movies: [],
+      series: []
     }
   },
   methods: {
@@ -40,6 +41,22 @@ export default {
                 .catch(err=> { 
                     console.log(err)
                 })
+
+      axios
+                .get(`
+
+                     https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&language=${this.apiLang}&query=${searched}
+
+                    `)
+                .then (outcome => {
+                    this.series = outcome.data.results;
+                    console.log(this.series)
+
+                })
+                .catch(err=> { 
+                    console.log(err)
+                })
+
     },
   }
 }
