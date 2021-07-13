@@ -7,6 +7,9 @@
               <h3>{{movie.title}}</h3>
 
               <ul>
+                  <li class="secondary" v-if="movie.overview != ''">
+                      <span>Trama:</span> {{movie.overview}}
+                  </li>
                   <li class="secondary">
                       <span>Titolo originale:</span> {{movie.original_title}}
                   </li>
@@ -39,7 +42,7 @@ export default {
 @import "./../styles/vars.scss";
 
 ul {
-    width: 50%;
+    width: 70%;
     margin:auto;
     list-style-type: none;
 }
