@@ -1,6 +1,6 @@
 <template>
   <main>
-      <ul v-if="this.movies.length > 0">
+      <ul>
           <li v-for="(e, i) in movies" :key="i" class="primary"> 
               
               {{e.title}}
@@ -32,8 +32,8 @@ export default {
     },
     data() {
         return {
-            apiURL: "https://api.themoviedb.org/3/search/movie?",
-            apiKey: "498d1c8d4b0a878ee9fc00ed9888ae18",
+            apiURL: "",
+            apiKey: "",
             apiLang: "it-IT",
             apiQuery: this.details,
             movies: []
@@ -47,7 +47,7 @@ export default {
             axios
                 .get(`
 
-                    ${this.apiURL}api_key=${this.apiKey}&language=${this.apiLang}&query=${this.details}
+                    https://api.themoviedb.org/3/search/movie?api_key=498d1c8d4b0a878ee9fc00ed9888ae18&language=${this.apiLang}&query=${this.details}
 
                     `)
                 .then (x => {
