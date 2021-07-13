@@ -1,71 +1,44 @@
 <template>
   <main>
-      <ul>
-          <li v-for="(e, i) in movies" :key="i" class="primary"> 
+
+      <ul v-for="(movie, i) in movieList" :key="i">
+            <li class="primary"> 
               
-              {{e.title}}
+              <h3>{{movie.title}}</h3>
 
               <ul>
                   <li class="secondary">
-                      Titolo originale: {{e.original_title}}
+                      <span>Titolo originale:</span> {{movie.original_title}}
                   </li>
                   <li class="secondary">
-                      Lingua originale: {{e.original_language}}
+                      <span>Lingua originale:</span> {{movie.original_language}}
                   </li>
                   <li class="secondary">
-                      voto: {{e.vote_average}}
+                      <span>voto:</span> {{movie.vote_average}}
                   </li>
               </ul>
 
           </li>
-      </ul>
+        </ul>
   </main>
 </template>
 
 <script>
-import axios from "axios";
+
 
 export default {
     name: "Main",
     props: {
-       details: String,
-    },
-    data() {
-        return {
-            apiURL: "",
-            apiKey: "",
-            apiLang: "it-IT",
-            apiQuery: this.details,
-            movies: []
-        }
-    },
-    created() {
-        this.getMovie();
-    },
-    methods: {
-        getMovie() {
-            axios
-                .get(`
-
-                    https://api.themoviedb.org/3/search/movie?api_key=498d1c8d4b0a878ee9fc00ed9888ae18&language=${this.apiLang}&query=${this.details}
-
-                    `)
-                .then (x => {
-                    this.movies = x.data.results;
-
-                })
-                .catch(err=> { 
-                    console.log(err)
-                })
-        }
+       movieList: Array
     }
 }
 </script>
 
-<style>
+<style lang="scss">
+
+@import "./../styles/vars.scss";
 
 ul {
-    color:white;
     width: 50%;
     margin:auto;
     list-style-type: none;
@@ -73,11 +46,19 @@ ul {
 
 li.primary {
     font-size: 1.8rem;
+
+    h3 {
+        color: $netflixRed;
+    }
 }
 
 li.secondary {
     font-size: 1.3rem;
     padding:20px;
+
+    span {
+        font-weight: 800;
+    }
 }
 
 </style>

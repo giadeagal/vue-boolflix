@@ -1,12 +1,13 @@
 <template>
   <header>
+
       <input type="search" 
       name="" 
       id="" 
       v-model="searchModel"
+      placeholder="cerca qui"
       @keyup.enter="$emit( 'searchEmit', searchModel )">
 
-      <div type="submit" class="btn btn-danger" @click="$emit( 'searchEmit', searchModel )">Cerca</div>
   </header>
 </template>
 
@@ -30,14 +31,16 @@ header {
     background-color: #333;
     padding: 20px;
     content:"";
-    display:table;
-    clear: both;
+    position:relative;
 }
 
-input,
-.btn {
-    float: right;
-    height: 40px;
+
+
+input {
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform: translateX(-50%);
 }
 
 
