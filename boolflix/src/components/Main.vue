@@ -13,14 +13,20 @@
                   <li class="secondary" v-if="movie.overview != ''">
                       <span>Trama:</span> {{movie.overview}}
                   </li>
+                  <li class="secondary" v-if="movie.overview == ''">
+                      <small>Trama non disponibile</small>
+                  </li>
                   <li class="secondary">
                       <span>Titolo originale:</span> {{movie.original_title}}
                   </li>
                   <li class="secondary">
                       <span>Lingua originale:</span> {{movie.original_language}}
                   </li>
-                  <li class="secondary">
+                  <li v-if="movie.vote_average!=0" class="secondary">
                       <span>voto: </span> {{movie.vote_average}}
+                  </li>
+                  <li v-if="movie.vote_average==0" class="secondary">
+                      <small>voto non disponibile </small>
                   </li>
               </ul>
 
@@ -39,14 +45,20 @@
                   <li class="secondary" v-if="serie.overview != ''">
                       <span>Trama:</span> {{serie.overview}}
                   </li>
+                  <li class="secondary" v-if="serie.overview == ''">
+                      <small>Trama non disponibile</small>
+                  </li>
                   <li class="secondary">
                       <span>Titolo originale:</span> {{serie.original_name}}
                   </li>
                   <li class="secondary">
-                      <span>Lingua originale:</span> {{serie.original_language}}
+                      <span>Lingua originale:</span>
                   </li>
-                  <li class="secondary">
+                  <li v-if="serie.vote_average!=0" class="secondary">
                       <span>voto: </span> {{serie.vote_average}}
+                  </li>
+                  <li v-if="serie.vote_average==0" class="secondary">
+                      <small>voto non disponibile </small>
                   </li>
               </ul>
 
