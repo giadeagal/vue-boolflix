@@ -1,12 +1,11 @@
 <template>
   <main>
-      <ul>
+      <ul v-if="this.movies.length > 0">
           <li v-for="(e, i) in movies" :key="i" class="primary"> 
+              
+              {{e.title}}
 
-              <ul v-if="e.title.toLowerCase().includes(details.toLowerCase())">
-                  <li class="primary">
-                      {{e.title}}
-                  </li>
+              <ul>
                   <li class="secondary">
                       Titolo originale: {{e.original_title}}
                   </li>
@@ -33,7 +32,10 @@ export default {
     },
     data() {
         return {
-            apiURL: "https://api.themoviedb.org/3/movie/popular?api_key=498d1c8d4b0a878ee9fc00ed9888ae18",
+            apiURL: "https://api.themoviedb.org/3/search/movie?",
+            apiKey: "498d1c8d4b0a878ee9fc00ed9888ae18",
+            apiLang: "it-IT",
+            apiQuery: this.details,
             movies: []
         }
     },
@@ -43,17 +45,26 @@ export default {
     methods: {
         getMovie() {
             axios
-                .get(this.apiURL)
+                .get(`
+
+                    ${this.apiURL}api_key=${this.apiKey}&language=${this.apiLang}&query=${this.details}
+
+                    `)
                 .then (x => {
-                    this.movies=(x.data.results);
+                    this.movies = x.data.results;
+                    console.log(this.apiQuery)
+
+                })
+                .catch(err=> { 
+                    console.log(err)
                 })
         }
     }
 }
 </script>
 
-<style lang="scss">
-@import "./../styles/vars.scss";
+<style>
+
 ul {
     color:white;
     width: 50%;
@@ -63,8 +74,6 @@ ul {
 
 li.primary {
     font-size: 1.8rem;
-    color: $netflixRed;
-    padding-top:50px
 }
 
 li.secondary {
@@ -73,3 +82,6 @@ li.secondary {
 }
 
 </style>
+
+++++++++++NOTE++++++++++
+API con i popular: "https://api.themoviedb.org/3/movie/popular?api_key=498d1c8d4b0a878ee9fc00ed9888ae18"
