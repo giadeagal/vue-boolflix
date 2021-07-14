@@ -1,78 +1,28 @@
 <template>
   <main>
 
-      <div class="left">
-          <h2>Film</h2>
-
-      <ul v-for="(movie, i) in movieList" :key="i">
-            <li class="primary"> 
-              
-              <h3>{{movie.title}}</h3>
-
-              <ul>
-                  <li class="secondary" v-if="movie.overview != ''">
-                      <span>Trama:</span> {{movie.overview}}
-                  </li>
-                  <li class="secondary" v-if="movie.overview == ''">
-                      <small>Trama non disponibile</small>
-                  </li>
-                  <li class="secondary">
-                      <span>Titolo originale:</span> {{movie.original_title}}
-                  </li>
-                  <li class="secondary">
-                      <span>Lingua originale:</span> {{movie.original_language}}
-                  </li>
-                  <li v-if="movie.vote_average!=0" class="secondary">
-                      <span>voto: </span> {{movie.vote_average}}
-                  </li>
-                  <li v-if="movie.vote_average==0" class="secondary">
-                      <small>voto non disponibile </small>
-                  </li>
-              </ul>
-
-          </li>
-        </ul>
-      </div>
+        <div class="left">
+            <MoviesCard :movies="movieList"/>
+        </div>
 
         <div class="right">
-            <h2>Serie TV</h2>
-        <ul v-for="(serie, i) in seriesList" :key="i">
-            <li class="primary"> 
-              
-              <h3>{{serie.name}}</h3>
-
-              <ul>
-                  <li class="secondary" v-if="serie.overview != ''">
-                      <span>Trama:</span> {{serie.overview}}
-                  </li>
-                  <li class="secondary" v-if="serie.overview == ''">
-                      <small>Trama non disponibile</small>
-                  </li>
-                  <li class="secondary">
-                      <span>Titolo originale:</span> {{serie.original_name}}
-                  </li>
-                  <li class="secondary">
-                      <span>Lingua originale:</span>
-                  </li>
-                  <li v-if="serie.vote_average!=0" class="secondary">
-                      <span>voto: </span> {{serie.vote_average}}
-                  </li>
-                  <li v-if="serie.vote_average==0" class="secondary">
-                      <small>voto non disponibile </small>
-                  </li>
-              </ul>
-
-          </li>
-        </ul>
+            <SeriesCard :series="seriesList"/>
         </div>
+        
+        
   </main>
 </template>
 
 <script>
-
+import MoviesCard from "./MoviesCard.vue"
+import SeriesCard from "./SeriesCard.vue"
 
 export default {
     name: "Main",
+    components: {
+    MoviesCard,
+    SeriesCard
+  },
     props: {
        movieList: Array,
        seriesList: Array
