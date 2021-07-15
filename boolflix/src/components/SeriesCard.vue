@@ -39,7 +39,7 @@
                   </li>
 
                   <li v-if="serie.vote_average!=0" class="secondary">
-                      <span>voto: </span> {{serie.vote_average}}
+                      <span>voto: </span> {{Math.ceil(serie.vote_average/2)}}
                   </li>
                   <li v-if="serie.vote_average==0" class="secondary">
                       <small>Ancora nessun voto</small>
@@ -52,8 +52,11 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
+
 export default {
     name: "Card",
+    components: StarRating,
     props: {
         series: Array
     },
