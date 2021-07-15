@@ -38,7 +38,20 @@
                         </li>
                         <li v-if="movie.vote_average!=0" class="secondary">
                             <span>voto: </span> 
-                            {{Math.ceil(movie.vote_average/2)}}
+                            <star-rating
+                                :star-size=15
+                                :read-only=true
+                                :rating="Math.ceil(movie.vote_average/2)"
+                                :show-rating="false"
+                                inactive-color="000"
+                                border-width="2"
+                                border-color="#ffd055"
+                                active-color="#ffd055"
+                                padding=0
+                                glow=8
+                                glow-color="#ffd055"
+                                inline=true
+                                />
                         </li>
                         <li v-if="movie.vote_average==0" class="secondary">
                             <small>Ancora nessun voto</small>
@@ -56,7 +69,9 @@ import StarRating from 'vue-star-rating'
 
 export default {
     name: "MoviesCard",
-    components: StarRating,
+    components:{
+    StarRating
+  },
     props: {
         movies: Array
     },
