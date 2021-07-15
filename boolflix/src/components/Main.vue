@@ -71,6 +71,17 @@ li.secondary {
     }
 }
 
+img{
+    max-height: 1.5rem;
+    border: .2px solid gray;
+    border-radius: 4px;
+    transition: 200ms;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
 </style>
 
 ++++++++++NOTE++++++++++

@@ -1,7 +1,7 @@
 <template>
   <section>
         <h2>Serie TV</h2>
-        
+
         <ul v-for="(serie, i) in series" :key="i">
             <li class="primary"> 
               
@@ -17,14 +17,26 @@
                   <li class="secondary">
                       <span>Titolo originale:</span> {{serie.original_name}}
                   </li>
+
                   <li class="secondary">
-                      <span>Lingua originale:</span>
+                    <span>Lingua originale: </span> 
+
+                    <img 
+                        v-if="flags.includes(serie.original_language)"
+
+                        :src="
+                            require(`../assets/flags/${serie.original_language}.png`)
+                        " 
+                        :alt="serie.original_language">
+                    
+                    {{serie.original_language}}
                   </li>
+
                   <li v-if="serie.vote_average!=0" class="secondary">
                       <span>voto: </span> {{serie.vote_average}}
                   </li>
                   <li v-if="serie.vote_average==0" class="secondary">
-                      <small>voto non disponibile </small>
+                      <small>Ancora nessun voto</small>
                   </li>
               </ul>
 
@@ -38,6 +50,11 @@ export default {
     name: "Card",
     props: {
         series: Array
+    },
+    data() {
+        return {
+            flags: ["al", "ar", "bg", "by", "ch", "cn", "cs", "cy", "cz", "da", "de", "ee", "en", "es", "fi", "fr", "gr", "hn", "hr", "in", "is", "it", "ja", "ko", "lt", "lv", "nb", "nl", "no", "pl", "pt", "ro", "ru", "si", "sk", "sq", "sv", "th", "tl", "tr", "ua", "zh"]
+        }
     }
 }
 </script>
