@@ -43,7 +43,6 @@ h2 {
 
 ul {
     width: 90%;
-    text-align: left;
     margin:auto;
     list-style-type: none;
 }
@@ -57,14 +56,27 @@ img.flag{
         transform: scale(1.2);
     }
 }
+
 .card{
     overflow-y: auto ;
-    min-height: 300px;
+    min-height: 500px;
     background-color: black;
+
+    h3 {
+        color: $netflixRed;
+    }
     
     li {
         font-size: 1.5rem;
-        padding: 10px ;
+        padding: 10px;
+
+        &:last-of-type {
+            padding-bottom: 50px;
+        }
+
+        & strong {
+            color: $netflixRed;
+        }
     }
 }
 
