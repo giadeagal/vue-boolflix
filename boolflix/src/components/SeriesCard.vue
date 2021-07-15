@@ -6,9 +6,9 @@
           <div class="row">
               <div class="col-4 g-3 hover-here" v-for="(serie, i) in series" :key="i">
                   <div class="card bg-dark text-white" >
-                  <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" :alt="serie.title" class="card-img">
+                  <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" :alt="serie.name" class="card-img">
                   <div class="card-img-overlay">
-                    <h3 class="card-title hover-txt">{{serie.title}}</h3>
+                    <h3 class="card-title hover-txt">{{serie.name}}</h3>
                     <p class="card-text">
                         <ul class="hover-txt">
                             <li v-if="serie.overview != ''">
@@ -18,7 +18,7 @@
                                 <small>Trama non disponibile</small>
                             </li>
                             <li class="secondary">
-                                <strong>Titolo originale:</strong> {{serie.original_title}}
+                                <strong>Titolo originale:</strong> {{serie.original_name}}
                             </li>
                             <li class="secondary">
                                 <strong>Lingua originale: </strong> 

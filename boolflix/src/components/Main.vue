@@ -59,7 +59,7 @@ img.flag{
 
 .card{
     overflow-y: auto ;
-    min-height: 500px;
+    min-height: 200px;
     background-color: black;
 
     h3 {
