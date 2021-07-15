@@ -1,11 +1,11 @@
 <template>
   <main>
 
-        <div class="left">
+        <div>
             <MoviesCard :movies="movieList"/>
         </div>
 
-        <div class="right">
+        <div>
             <SeriesCard :series="seriesList"/>
         </div>
         
@@ -41,36 +41,12 @@ h2 {
     padding: 30px 0;
 }
 
-.left,
-.right {
-    width: 50%;
-    float:left;
-}
-
 ul {
-    width: 70%;
+    width: 90%;
+    text-align: left;
     margin:auto;
     list-style-type: none;
 }
-
-li.primary {
-    font-size: 2rem;
-
-    h3 {
-        color: $netflixRed;
-        font-size: 1.3rem;
-    }
-}
-
-li.secondary {
-    font-size: 1.3rem;
-    padding:20px;
-
-    span {
-        font-weight: 800;
-    }
-}
-
 img.flag{
     max-height: 1.5rem;
     border: .2px solid gray;
@@ -81,8 +57,30 @@ img.flag{
         transform: scale(1.2);
     }
 }
+.card{
+    overflow-y: auto ;
+    min-height: 300px;
+    background-color: black;
+    
+    li {
+        font-size: 1.5rem;
+        padding: 10px ;
+    }
+}
 
+.hover-txt {
+    display: none;
+}
+
+.hover-here:hover {
+    cursor:pointer;
+
+    & img:not(.flag){
+        filter:brightness(0);
+    }
+
+    & .hover-txt {
+        display: inline;
+    }
+}
 </style>
-
-++++++++++NOTE++++++++++
-API con i popular: "https://api.themoviedb.org/3/movie/popular?api_key=498d1c8d4b0a878ee9fc00ed9888ae18"

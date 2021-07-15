@@ -1,13 +1,19 @@
 <template>
   <header>
+      <div class="container">
+          <div class="logo">
+          <a href="#"><h1>Gialloflix</h1></a>
+      </div>
 
-      <input type="search" 
-      name="" 
-      id="" 
-      v-model="searchModel"
-      placeholder="cerca qui"
-      @keyup.enter="$emit( 'searchEmit', searchModel )">
-
+      <div class="search">
+        <input  type="search" 
+                name="" 
+                id="" 
+                v-model="searchModel"
+                placeholder="cerca qui"
+                @keyup.enter="$emit( 'searchEmit', searchModel )">
+      </div>
+      </div>
   </header>
 </template>
 
@@ -24,25 +30,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./../styles/vars.scss";
 
 header {
     height: 80px;
     width: 100%;
     background-color: #333;
     padding: 20px;
-    content:"";
-    position:relative;
+
+    & a {
+        color: $netflixRed;
+        text-decoration: none;
+    }
 }
 
-
-
-input {
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform: translateX(-50%);
+.container {
+    display: flex;
+    justify-content: space-between;
 }
-
-
 
 </style>
