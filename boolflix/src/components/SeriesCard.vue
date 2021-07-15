@@ -8,6 +8,12 @@
               <h3>{{serie.name}}</h3>
 
               <ul>
+                  <li class="secondary">
+                    <img :src="`
+                                https://image.tmdb.org/t/p/w342/${serie.poster_path}
+                            `" 
+                            alt="">
+                 </li>
                   <li class="secondary" v-if="serie.overview != ''">
                       <span>Trama:</span> {{serie.overview}}
                   </li>
@@ -21,7 +27,7 @@
                   <li class="secondary">
                     <span>Lingua originale: </span> 
 
-                    <img 
+                    <img class="flag"
                         v-if="flags.includes(serie.original_language)"
 
                         :src="

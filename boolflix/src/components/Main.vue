@@ -24,8 +24,8 @@ export default {
     SeriesCard
   },
     props: {
-       movieList: Array,
-       seriesList: Array
+        movieList: Array,
+        seriesList: Array
     }
 }
 </script>
@@ -71,7 +71,7 @@ li.secondary {
     }
 }
 
-img{
+img.flag{
     max-height: 1.5rem;
     border: .2px solid gray;
     border-radius: 4px;

@@ -8,6 +8,12 @@
                     <h3>{{movie.title}}</h3>
 
                     <ul>
+                        <li class="secondary">
+                            <img :src="`
+                                https://image.tmdb.org/t/p/w342/${movie.poster_path}
+                            `" 
+                            alt="movie.title">
+                        </li>
                         <li class="secondary" v-if="movie.overview != ''">
                             <span>Trama:</span> {{movie.overview}}
                         </li>
@@ -20,7 +26,7 @@
                         <li class="secondary">
                             <span>Lingua originale: </span> 
 
-                            <img 
+                            <img class="flag"
                             v-if="flags.includes(movie.original_language)"
 
                             :src="
